@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container } from '../Header/styles';
-import { ButtonInclude } from '../ButtonInclude';
+
 
 export function Foods({ price }) {
   const [quantity, setQuantity] = useState(1);
@@ -22,7 +22,7 @@ export function Foods({ price }) {
         <button onClick={increaseQuantity}>+</button>
         
       </div>
-      <ButtonInclude title="Incluir"/>
+      
     </div>
     </Container>
   );

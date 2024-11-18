@@ -1,13 +1,15 @@
 import { ButtonInclude } from "../ButtonInclude";
 import { Container } from "./styles";
+import { Foods } from "../Foods";
 
 
-export function Cards(){
+export function Cards({ name, description }){
     return(
         <Container>
-            <img src= "assets/food1.png" />
-            <h2>Spaguetti Gambe</h2>
-            <h4>Massa fresca com camarões e pesto</h4>
+            <img src= "/food1.png" />
+            <span>{name}</span>
+            <h4>{description}</h4>
+            <Foods />
             <ButtonInclude />
         </Container>
     )

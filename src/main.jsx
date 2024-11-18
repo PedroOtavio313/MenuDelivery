@@ -4,10 +4,10 @@ import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyles from './styles/global'
 import themes from './styles/themes'
-/*import { SignUp } from './pages/SignUp'
+/*import { New } from './pages/New'
+import { Details } from './pages/Details'
 import { Login } from './pages/Login'
-import { New } from './pages/New'
-import { Details } from './pages/Details'*/
+import { SignUp } from './pages/SignUp'*/
 import { Menu } from './pages/Menu'
 
 
