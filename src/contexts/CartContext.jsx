@@ -1,18 +1,27 @@
-import React, { createContext, useEffect, UseEffect, useState } from "react";
+import React, { createContext, useEffect, UseEffect, useReducer, useState } from "react";
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }){
     const [count, setCount] = useState();
-    const [items, setItems] = useState(localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")):[])
+    const [items, setItems] = useState(() => {
+        try {
+            const savedCart = localStorage.getItem("cart");
+            return savedCart ? JSON.parse(savedCart) : [];
+        } catch (error) {
+            console.error("Erro ao analisar o JSON do carrinho:", error);
+            return [];
+        }
+    });
+
 
     useEffect(() => {
-        setCount(items.length)
-        if (items.lenght > 0 ){
-            localStorage.setItem("cart", JSON.stringify(items))
-        }
-            
-    }, [items])
+        localStorage.setItem("cart", JSON.stringify(items));
+        setCount(items.reduce((acc, item) => acc + item.quantity, 0)); // Soma todas as quantidades
+    }, [items]);
+    
+
+
 
     return (
         <CartContext.Provider value={{ count, setCount, items, setItems }}>
@@ -20,3 +29,4 @@ export function CartProvider({ children }){
         </CartContext.Provider>
     )
 }
+
