@@ -9,5 +9,11 @@ export const Container = styled.div`
   color: white;
   
   
+  > food-item {
+    background: red;
+  }
+  
 `; 
+
+
 

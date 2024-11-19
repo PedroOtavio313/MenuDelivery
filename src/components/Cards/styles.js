@@ -16,7 +16,14 @@ export const Container = styled.div`
         border-radius: 8px;
         margin-bottom: 16px;
         margin: 24px;
+        object-fit: cover;
+        transition: transform 0.5s ease, filter 0.5s ease;
+        transform-origin: center;
     }
+
+    img:hover {
+        transform: rotate(10deg) scale(1.1);
+        filter: contrast(1.2);
 
     h4 {
         margin: 15px 24px;
