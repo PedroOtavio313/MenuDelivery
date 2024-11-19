@@ -9,14 +9,16 @@ import { Details } from './pages/Details'
 import { Login } from './pages/Login'
 import { SignUp } from './pages/SignUp'*/
 import { Menu } from './pages/Menu'
-
+import { CartProvider } from './contexts/CartContext'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={themes}>    
       <GlobalStyles />
-      <Menu />
+      <CartProvider>
+        <Menu />
+      </CartProvider>
     </ThemeProvider>
   </StrictMode>
 )

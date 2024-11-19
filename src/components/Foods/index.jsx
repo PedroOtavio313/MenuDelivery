@@ -13,9 +13,8 @@ export function Foods({ price }) {
   return (
     <Container>
     <div className="food-item">
-      <h3>Combinados</h3>
-      <p>teste</p>
-      <span>R$ {price !== undefined ? price.toFixed(2) : '1.00'}</span> {/* Default to 0.00 if price is undefined */}
+    
+      <span>R$ {price !== undefined ? price.toFixed(2) : '10.00'}</span> {/* Default to 0.00 if price is undefined */}
       <div className="quantity-control">
         <button onClick={decreaseQuantity}>-</button>
         <span>{quantity}</span>
