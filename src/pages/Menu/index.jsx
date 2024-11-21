@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { BackgroundLateral, Container } from "./styles";
-/*import { Foods } from "../../components/Foods";
-import { Footer } from "../../components/Footer"*/
+/*import { Foods } from "../../components/Foods";*/
+import { Footer } from "../../components/Footer"
 import { Header } from "../../components/Header"
 import { Slider } from "../../components/Slider";
 
@@ -23,6 +23,7 @@ export function Menu() {
                 
                 <Slider />  
                 <Slider />  
+                <Footer />
         </Fragment>
     );
     
