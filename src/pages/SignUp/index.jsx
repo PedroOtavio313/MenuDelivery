@@ -1,10 +1,40 @@
 import { Background, Container, Form } from "./styles"
 import { Button } from "../../components/Button"
 import { Input } from "../../components/Input"
+import { useState } from "react"
 
 
 
 export function SignUp(){
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [address, setAddress] = useState("")
+
+  const navigate = useNavigate()
+
+function handleSignUp(){
+  if(!name || !email | !password | !address){
+    return alert ("Preencha todos os campos!")
+  }
+  api.post("/users", {name, email, password, address}).Backgroundthen(() => {
+    alert("Usuário cadastrado com sucesso!")
+    navigate("/")
+  })
+  .catch(error => {
+    if(error.response){
+      alert(error.response.data.message)
+    }else{
+      alert("Não foi possível efetuar o cadastro do usuário informado")
+    }
+  })
+}
+
+
+
+
+
+
   return(
     <Container>
       <Form>

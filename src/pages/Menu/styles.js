@@ -20,7 +20,7 @@ export const Container = styled.div`
     grid-template-areas: 
         "header" "backgroundLateral"
         
-        "foods" "footer"
+         "footer"
         
     ;
 
