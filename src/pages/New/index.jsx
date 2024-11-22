@@ -4,11 +4,39 @@ import { Textarea } from '../../components/Textarea'
 import { Container, Form } from './styles'
 import { Section } from '../../components/Section'
 import { MenuTag } from '../../components/MenuTag'
+import { useState } from 'react'
+import { Button } from '../../components/Button'
+import { api } from '../../services/api'
+
 
 
 
 
 export function New(){
+
+const [title, setTitle] = useState("")
+const [description, setDescription] = useState("")    
+const [tags, setTags] = useState([])
+const [newTag, setNewTag] = useState("")
+
+
+function handleAddTag(){
+    setTags(prevState => [...prevState, newTag])
+    setNewTag("")
+}
+
+function handleRemoveTag(deleted){
+    setTags(prevState => prevState.filter(tag => tag !== deleted))
+  }
+
+async function handleNewPlate() {
+    await api.post("/", {
+        title,
+        description,
+        tags
+    })
+}
+
     return(
         <Container>
             <Header />
@@ -21,21 +49,26 @@ export function New(){
                     </header>
 
                     <div class="plate-options">
-                        <Input placeholder="Nome do prato" />
-                        <Textarea placeholder="Observações"/>
+                        <Input placeholder="Nome do prato" onChange={e => setTitle(e.target.value)} />
+                        <Textarea placeholder="Descrição" onChange={e => setDescription=(e.target.value)} />
+
                         <label for="category">Categoria</label>
                         <select id="category" name="category" class="dropdown">
                             <option value="Refeição">Refeição</option>
                             <option value="Refeição">Bebida</option>
                             <option value="Refeição">Sobremesa</option>
                         </select>
+
                         <Section title="Marcadores">
                             <div className='tags'>
                                 {
-                                    
-                                    <MenuTag value="salmão" />
-                                    
+                                   tags.map((tag,index) => {
+                                    <MenuTag key={String(index)} value={tag} onClick={() => handleRemoveTag(tag)} />
+                                   })                                   
                                 }
+
+                                <MenuTag isNew placeholder="Nova tag" onChange= {e => setNewTag(e.target.value)} value={newTag} onClick={handleAddTag} />
+
                                 <MenuTag 
                                 isNew 
                                 placeholder="Nova tag"
@@ -44,7 +77,7 @@ export function New(){
                                 />
                             </div>
                         </Section>
-                        <button title="Salvar" />
+                        <Button title="Salvar alterações" onClick={handleNewPlate} />
                         
                     </div>
                     
