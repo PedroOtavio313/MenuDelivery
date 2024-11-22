@@ -30,6 +30,7 @@ export const Searchbar = styled.input`
     color: white;
     border-radius: 5px;
     border: none;
+    text-align: center;
     
     `
     
