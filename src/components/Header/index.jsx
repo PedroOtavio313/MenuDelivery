@@ -12,7 +12,7 @@ export function Header() {
             <HomeButton>
             <span><a href="#">Sakura</a></span>
             </HomeButton>
-            <Searchbar placeholder="Busque por pratos ou ingredientes"/>
+            <Searchbar placeholder="Busque por pratos ou ingredientes" />
             <AnimatedButton>
                 <span>Itens no carrinho: {count}</span>
             </AnimatedButton>
